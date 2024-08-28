@@ -9,14 +9,14 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.email.label(class="form-label") }}
-            {{ form.email(class="form-control") }}
+            {{ form.email(class="form-control", id="emailInput") }}
             {% for error in form.email.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label(class="form-label") }}
-            {{ form.password(class="form-control") }}
+            {{ form.password(class="form-control", id="passwordInput") }}
             {% for error in form.password.errors %}
             <span style="color: red;">{{ error }}</span>
             {% endfor %}
@@ -25,8 +25,10 @@
             {{ form.remember_me(class="form-check-input mt-0") }}{{ form.remember_me.label(class="form-label") }}
         </p>
         <p>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn btn-outline-primary", id="submitButton") }}
         </p>
     </form>
 </div>
+
+<script src="{{ url_for('static', filename='login.js') }}"></script>
 {% endblock %}
