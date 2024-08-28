@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-md w-25">
+    <h1>Add a new Post</h1>
+    <form method="post" action="" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        {% if edit_post %}
+        <h1>EDIT!</h1>
+        {% endif %}
+        <p>
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control") }}
+            {% for error in form.title.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.body.label(class="form-label") }}
+            {{ form.body(class="form-control") }}
+            {% for error in form.body.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.image.label(class="form-label") }}<br>
+            {{ form.image(class="form-control") }}<br>
+            {% for error in form.image.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submit(class="btn btn-primary") }}
+        </p>
+    </form>
+</div>
+{% include "posts.html" %}
+{% endblock %}

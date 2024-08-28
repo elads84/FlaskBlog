@@ -1,0 +1,82 @@
+p {
+padding: 0px;
+margin: 0px;
+}
+
+.main-posts {
+width: 50%;
+}
+
+
+.profile-picture {
+border-radius: 50%;
+width: 64px;
+height: 64px;
+margin-right: 10px;
+margin-left: 30px;
+}
+
+#user-name-display {
+font-weight: bold;
+color: #888888;
+margin-right: 50px;
+}
+
+.round-image {
+border-radius: 50%;
+}
+
+.custom-card-title {
+    background-color: #f8f9fa; /* Change this to your desired background color */
+    color: #222222; /* Ensures the text color contrasts with the background */
+    padding: 10px; /* Optional: Adjust padding for better spacing */
+    border-bottom: 1px solid #ddd; /* Optional: Add a bottom border for separation */
+    border-radius: 10px;
+}
+
+.post-photo {
+padding-left: 10px;
+padding-right: 10px;
+border-radius: 20px;
+
+}
+
+.posted-at {
+color: #7f7f7f;
+font-size: 10px;
+padding-left: 10px;
+}
+
+.likes-and-comments {
+color: #7f7f7f;
+font-size: 14px;
+padding-left: 10px;
+}
+
+.custom-buttons-group {
+padding: 10px;
+background-color: white;
+}
+
+.comments {
+background-color: #f8f9fa;
+padding-left: 10px;
+padding-bottom: 10px;
+border-radius: 20px;
+margin-bottom: 10px;
+}
+
+.comment-form {
+padding: 10px;
+}
+
+.nav-bar {
+margin-bottom: 20px;
+}
+
+.comment-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Space between comment lines */
+}

@@ -1,0 +1,61 @@
+<div class="container main-posts">
+    {% for post in posts %}
+    <div class="card mb-3">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title"><img src="{{post.author.profile_pic}}" width="32px"
+                                                          style="border-radius:50%; margin-right: 10px;">{{
+                post.author.username }}</h5>
+            <p class="card-title" style="font-weight: bold;">{{ post.title }}</p>
+            <p class="card-text">{{ post.body }}</p>
+        </div>
+        {% if post.has_photo %}
+        <img src="{{ post.photo }}" class="card-img-top post-photo">
+        {% endif %}
+        <p class="posted-at">Posted at: {{ post.timestamp.strftime('%B %d, %Y, %H:%M') }}</p>
+        <p class="likes-and-comments">👍{{ post.likes|length }} ✏️{{ post.comments|length }}</p>
+        {% if post.did_user_like(current_user.id) %}
+        {% set liked='Liked 😊' %}
+        {% set btn_class='btn btn-primary' %}
+        {% else %}
+        {% set liked='like 👍' %}
+        {% set btn_class='btn btn-outline-primary' %}
+        {% endif %}
+
+        <div class="btn-group custom-buttons-group" role="group">
+            <a href="/like/{{post.id}}" type="button" class="{{ btn_class }}">{{ liked }}</a>
+            {% if post.author.id == current_user.id %}
+            <a href="/delete/{{post.id}}" type="button" class="btn btn-danger">Delete</a>
+            <a href="/edit/{{ post.id }}" type="button" class="btn btn-info">Edit</a>
+            {% endif %}
+        </div>
+
+        <div class="comments">
+            <div class="comments comment-form">
+                <form class="row g-1" method="post" action="/add_comment/{{ post.id }}">
+                    <div class="col-auto w-75">
+                        <input type="text" class="form-control" placeholder="Comment here..." name="comment">
+                    </div>
+                    <div class="col-auto w-25">
+                        <button type="submit" class="btn btn-outline-success">Comment</button>
+                    </div>
+                </form>
+            </div>
+            {% if post.comments %}
+            <h6>Comments:</h6>
+            {% for comment in post.comments %}
+            <p>
+                <img src="{{ comment.author.profile_pic }}" width="28px" height="28px" class="round-image">
+                {{ comment.author.username }} @ {{ comment.timestamp.strftime('%d.%m.%y, %H:%M') }}: {{ comment.comment
+                }}
+                {% if comment.author.id == current_user.id or post.author.id == current_user.id %}
+                <a href="/delete_comment/{{ comment.id }}" type="button">🗑️</a>
+                <a href="/edit_comment/{{ comment.id }}" type="button">✏️️</a>
+                {% endif %}
+            </p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>

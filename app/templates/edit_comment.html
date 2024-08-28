@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container main-posts">
+    <div class="comments comment-form main-posts">
+        <form class="row g-1" method="post" action="/edit_comment/{{ comment.id }}">
+            <div class="col-auto w-75">
+                <input type="text" class="form-control" value="{{ comment.comment }}" name="comment_content">
+            </div>
+            <div class="col-auto w-25">
+                <button type="submit" class="btn btn-outline-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
